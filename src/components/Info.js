@@ -9,6 +9,7 @@ const UserInfo = () => {
   const { githubUser } = useContext(GithubContext);
   const { public_repos, followers, following, public_gists } = githubUser;
 
+  //!Completed
   const items = [
     {
       id: 1,
