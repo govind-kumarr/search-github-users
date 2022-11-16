@@ -1,3 +1,4 @@
+import { toHaveAttribute } from "@testing-library/jest-dom";
 import React from "react";
 import { useContext } from "react";
 import styled from "styled-components";
@@ -29,10 +30,12 @@ const Repos = () => {
     return total;
   }, {});
 
+  //!Most Used Lang
   const mostUsed = Object.values(languages)
     .sort((a, b) => b.value - a.value)
     .slice(0, 5);
   console.log(languages);
+
   /* const chartData = [
     {
       label: "JavaScript",
@@ -51,6 +54,8 @@ const Repos = () => {
       value: "140",
     },
   ];*/
+
+  //! Most Stars Per Language
   const mostPopular = Object.values(languages)
     .sort((a, b) => b.stars - a.stars)
     .map((item) => {
@@ -58,12 +63,36 @@ const Repos = () => {
     })
     .slice(0, 5);
   console.log(mostPopular);
+
+  //!Stars and forks
+
+  let { stars, forks } = repos.reduce(
+    (total, item) => {
+      const { stargazers_count, name, forks } = item;
+
+      total.stars[stargazers_count] = { label: name, value: stargazers_count };
+      console.log(total);
+
+      total.forks[forks] = {
+        label: name,
+        value: forks,
+      };
+      return total;
+    },
+    {
+      stars: {},
+      forks: {},
+    }
+  );
+  stars = Object.values(stars).slice(-5).reverse();
+  forks = Object.values(forks).slice(-5).reverse();
   return (
     <section className="section">
-      <Wrapper>
+      <Wrapper className="section-center">
         <Pie3D data={mostUsed} />
-        <div></div>
+        <Column3D data={stars} />
         <Doughnut2D data={mostPopular} />
+        <Bar3D data={forks} />
       </Wrapper>
     </section>
   );
