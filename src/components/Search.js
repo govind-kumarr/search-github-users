@@ -1,11 +1,49 @@
-import React from 'react';
-import styled from 'styled-components';
-import { MdSearch } from 'react-icons/md';
-import { GithubContext } from '../context/context';
-import { useState } from 'react';
+import React from "react";
+import styled from "styled-components";
+import { MdSearch } from "react-icons/md";
+import { GithubContext } from "../context/context";
+import { useState } from "react";
+import { useContext } from "react";
 const Search = () => {
-  const [user,setUser] = useState('')
-  return <h2>search component</h2>;
+  const [user, setUser] = useState("");
+  const {
+    isLoading,
+    searchGithubUser,
+    requests,
+    error: { show, msg },
+  } = useContext(GithubContext);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (user) {
+      searchGithubUser(user);
+    }
+  };
+  return (
+    <section className="section">
+      <Wrapper className="section-center">
+        {show && (
+          <ErrorWrapper>
+            <p>{msg}</p>
+          </ErrorWrapper>
+        )}
+        <form onSubmit={handleSubmit}>
+          <div className="form-control">
+            <MdSearch />
+            <input
+              type="text"
+              value={user}
+              onChange={(e) => setUser(e.target.value)}
+              placeholder="enter github user"
+            />
+            {requests > 0 && !isLoading && (
+              <button type="submit">Search</button>
+            )}
+          </div>
+        </form>
+        <h3>requests : {requests} / 60</h3>
+      </Wrapper>
+    </section>
+  );
 };
 
 const Wrapper = styled.div`

@@ -25,7 +25,7 @@ const Repos = () => {
           stars: total[language].stars + stargazers_count,
         });
 
-    console.log(total);
+    // console.log(total);
 
     return total;
   }, {});
@@ -34,7 +34,7 @@ const Repos = () => {
   const mostUsed = Object.values(languages)
     .sort((a, b) => b.value - a.value)
     .slice(0, 5);
-  console.log(languages);
+  // console.log(languages);
 
   /* const chartData = [
     {
@@ -62,7 +62,7 @@ const Repos = () => {
       return { ...item, value: item.stars };
     })
     .slice(0, 5);
-  console.log(mostPopular);
+  // console.log(mostPopular);
 
   //!Stars and forks
 
@@ -71,7 +71,7 @@ const Repos = () => {
       const { stargazers_count, name, forks } = item;
 
       total.stars[stargazers_count] = { label: name, value: stargazers_count };
-      console.log(total);
+      // console.log(total);
 
       total.forks[forks] = {
         label: name,

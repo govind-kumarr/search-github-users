@@ -1,10 +1,3 @@
-## Starter Project
-
-- css provided (global styles, styled components)
-- folders/files already setup
-- all imports included (warnings)
-- index.js for easier imports
-
 ## Styled Components
 
 [Styled-Components - Main Docs](https://styled-components.com/)
@@ -31,8 +24,8 @@ export default ReactComponent
 [React Icons - Main Docs](https://react-icons.github.io/react-icons/)
 
 ```jsx
-import { FiUsers, FiUserPlus } from 'react-icons/fi';
-<FiUsers className='nameOfTheClass'> </FiUsers>;
+import { FiUsers, FiUserPlus } from "react-icons/fi";
+<FiUsers className="nameOfTheClass"> </FiUsers>;
 ```
 
 ## React Router Dom
@@ -70,8 +63,8 @@ version used - "react-router-dom": "^5.2.0",
 - Choose : React
 - Go to Settings Tab
 - Copy/Paste Domain, ClientID - can be public (or use .env)
-- Add Domain -
-  for now http://localhost:3000 (DON'T COPY PASTE FROM URL BAR)
+
+  for now http://localhost:3000 
 
   - Allowed Callback URLs
   - Allowed Logout URLs
