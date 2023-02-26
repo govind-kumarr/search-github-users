@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import styled from "styled-components";
 import loginImg from "../images/login-img.svg";
+import { GithubContext } from "../context/context";
 const Login = () => {
   const { loginWithRedirect } = useAuth0();
+  const { searchGithubUser } = useContext(GithubContext);
+  useEffect(() => {
+    searchGithubUser();
+  }, []);
   return (
     <Wrapper>
       <div className="container">

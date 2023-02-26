@@ -8,9 +8,7 @@ const Dashboard = () => {
 
   const { isLoading, searchGithubUser } = useContext(GithubContext);
 
-  useEffect(() => {
-    searchGithubUser();
-  }, []);
+
 
   if (isLoading) {
     return (
