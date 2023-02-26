@@ -18,6 +18,7 @@ ReactDOM.render(
       domain="dev-vx0gzof4swjjzes0.us.auth0.com"
       clientId="wMSKuPCb1fO4OAGSBWwp9BPohNf39yYi"
       redirectUri={window.location.origin}
+      cacheLocation="localstorage"
     >
       <GithubProvider>
         <App />
