@@ -10,9 +10,9 @@ const rootUrl = "https://api.github.com";
 const GithubContext = createContext();
 
 const GithubProvider = ({ children }) => {
-  const [githubUser, setGithubUser] = useState(mockUser);
-  const [repos, setRepos] = useState(mockRepos);
-  const [followers, setFollowers] = useState(mockFollowers);
+  const [githubUser, setGithubUser] = useState(null);
+  const [repos, setRepos] = useState(null);
+  const [followers, setFollowers] = useState(null);
 
   //!Request Loading
   const [requests, setRequests] = useState(0);
@@ -20,7 +20,7 @@ const GithubProvider = ({ children }) => {
   // !error
   const [error, setError] = useState({ show: false, msg: "" });
 
-  const searchGithubUser = async (user) => {
+  const searchGithubUser = async (user = "govind-kumarr") => {
     toggleError();
     //!Toggle Error
     setIsLoading(true);
