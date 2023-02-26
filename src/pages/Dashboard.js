@@ -5,10 +5,7 @@ import { GithubContext } from "../context/context";
 import { useContext } from "react";
 
 const Dashboard = () => {
-
-  const { isLoading, searchGithubUser } = useContext(GithubContext);
-
-
+  const { isLoading } = useContext(GithubContext);
 
   if (isLoading) {
     return (
